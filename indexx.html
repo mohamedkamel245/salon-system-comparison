@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>جدول مقارنة رسمي – أنظمة إدارة الصالونات</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Light clean palette */
+      --bg:#f7f7f9;
+      --surface:#ffffff;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --text:#111827;
+
+      /* Maroon */
+      --maroon:#7b1b3a;
+      --maroon-2:#a11d45;
+      --maroon-3:#c83a63;
+
+      --green:#16a34a;
+      --red:#dc2626;
+      --amber:#d97706;
+
+      --border:#e5e7eb;
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --radius:18px;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Cairo",system-ui,-apple-system,Segoe UI,Tahoma,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.8;
+    }
+
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:28px 16px 60px;
+    }
+
+    /* Header */
+    .hero{
+      background:#ffffff;
+      border:1px solid var(--border);
+      border-radius:28px;
+      padding:26px 22px;
+      box-shadow:var(--shadow);
+    }
+    .kicker{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:6px 12px;
+      border-radius:999px;
+      background:#f3e6eb;
+      color:var(--maroon);
+      font-weight:700;
+      font-size:13px;
+    }
+    .title{
+      margin:14px 0 6px;
+      font-size:28px;
+      font-weight:800;
+      color:var(--maroon);
+    }
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      max-width:900px;
+      font-size:14px;
+    }
+
+    .actions{
+      margin-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .btn{
+      border:1px solid var(--border);
+      background:#ffffff;
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:12px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.2s ease;
+    }
+    .btn:hover{background:#f9fafb}
+    .btn.primary{
+      background:var(--maroon);
+      color:#fff;
+      border:none;
+    }
+
+    /* Section */
+    .section{
+      margin-top:22px;
+      background:#ffffff;
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .section-head{
+      padding:16px 18px;
+      background:#fafafa;
+      border-bottom:1px solid var(--border);
+    }
+    .section-title{
+      margin:0;
+      font-size:18px;
+      font-weight:800;
+      color:var(--maroon);
+    }
+    .section-note{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:12px;
+    }
+    .content{padding:16px 18px 22px;}
+
+    /* Table */
+    .table-wrap{
+      overflow:auto;
+      border:1px solid var(--border);
+      border-radius:14px;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      min-width:900px;
+    }
+    th,td{
+      padding:12px;
+      border-bottom:1px solid var(--border);
+      font-size:14px;
+      text-align:right;
+    }
+    th{
+      background:#f9fafb;
+      font-weight:800;
+    }
+    tr:hover td{background:#fafafa}
+    td:first-child,th:first-child{
+      font-weight:800;
+      background:#ffffff;
+    }
+
+    /* Pills */
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:6px;
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+      border:1px solid var(--border);
+      background:#ffffff;
+    }
+    .pill.ok{color:var(--green);border-color:#bbf7d0;background:#f0fdf4}
+    .pill.no{color:var(--red);border-color:#fecaca;background:#fef2f2}
+    .pill.mid{color:var(--amber);border-color:#fde68a;background:#fffbeb}
+    .pill.tag{
+      color:var(--maroon);
+      border-color:#f3c7d4;
+      background:#fdf2f6;
+    }
+
+    /* Cards */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:14px;
+      margin-top:14px;
+    }
+    .card{
+      background:#ffffff;
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:16px;
+    }
+    .card h4{
+      margin:0 0 10px;
+      font-size:15px;
+      font-weight:900;
+      color:var(--maroon);
+    }
+    .list{
+      margin:0;
+      padding-right:18px;
+      font-size:13px;
+    }
+    .list li{margin:6px 0}
+
+    .footer{
+      margin-top:18px;
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+    }
+
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  .hero,
+  .section {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+
+  .btn,
+  .actions {
+    display: none !important;
+  }
+
+  table {
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  .section {
+    break-inside: avoid;
+    margin-bottom: 14px;
+  }
+
+  .footer {
+    color: #444 !important;
+  }
+}
+
+  </style>
+</head>
+
+
+<body>
+  <div class="wrap">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-inner">
+        <span class="kicker">🧾 جدول مقارنة رسمي – أنظمة إدارة الصالونات</span>
+        <h1 class="title">مقارنة واضحة بين نظام Btoot والمنافسين (Mahjoz / Mashghali / Kofeer / Glamira)</h1>
+        <p class="subtitle">
+          تم إدراج الأسعار والميزات كما هي في البيانات من مصادرها الرئيسي ، مع تمييز النقاط الفارقة.
+        </p>
+
+        <div class="actions">
+<button class="btn primary" onclick="printPDF()">
+  🖨️ تصدير PDF
+</button>
+          <button class="btn" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">الانتقال للتسعير</button>
+          <button class="btn" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">الميزات</button>
+          <button class="btn" onclick="document.getElementById('summary').scrollIntoView({behavior:'smooth'})">الخلاصة</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1) PRICING -->
+    <section class="section" id="pricing">
+      <div class="section-head">
+        <h2 class="section-title">1️⃣ مقارنة التسعير السنوي (بعد الخصومات)</h2>
+        <p class="section-note">الأسعار بالريال السعودي — Mashghali بالدولار مع تحويل تقريبي.</p>
+      </div>
+
+      <div class="content">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>النظام</th>
+                <th>أقل باقة (سنوي)</th>
+                <th>الباقة المتوسطة</th>
+                <th>الباقة العليا</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>نظام Btoot </td>
+                <td><span class="pill tag"><span class="icon">★</span>0,000 ريال</span></td>
+                <td><span class="pill tag"><span class="icon">★</span>0,000 ريال</span></td>
+                <td><span class="pill tag"><span class="icon">★</span>0,000 ريال</span></td>
+              </tr>
+              <tr>
+                <td>Mahjoz</td>
+                <td>1,499 ريال</td>
+                <td>2,999 ريال</td>
+                <td>4,499 ريال</td>
+              </tr>
+              <tr>
+                <td>Mashghali</td>
+                <td>≈ 1,682 ريال</td>
+                <td>باقة واحدة</td>
+                <td>باقة واحدة</td>
+              </tr>
+              <tr>
+                <td>Kofeer</td>
+                <td>3,453 ريال</td>
+                <td>3,993 ريال</td>
+                <td>4,593 ريال</td>
+              </tr>
+              <tr>
+                <td>Glamira</td>
+                <td>1,552 ريال <span class="pill mid"><span class="icon">%</span>بعد خصم 10%</span></td>
+                <td>2,170 ريال</td>
+                <td>3,150 ريال</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid">
+          <div class="card half">
+            <h4><span class="pill tag"><span class="icon">G</span>تفاصيل Glamira</span></h4>
+            <ul class="list">
+              <li>التأسيس: <span class="hl">1,725</span> → <span class="hl">1,552</span> ريال <span class="pill mid"><span class="icon">OR</span>أو 15 شهر</span></li>
+              <li>الأساسية: <span class="hl">3,100</span> → <span class="hl">2,170</span> ريال</li>
+              <li>المتقدمة: <span class="hl">4,500</span> → <span class="hl">3,150</span> ريال</li>
+            </ul>
+          </div>
+
+          <div class="card half">
+            <h4><span class="pill tag"><span class="icon">📌</span>ملاحظة تسويقية</span></h4>
+            <p>
+              وضع أسعار نظامنا بهذه الصيغة يعطينا تموضع “قيمة أعلى + وضوح أكثر”:
+              لا رسوم تأسيس، أسعار محلية، وتدرج باقات واضح (Upsell).
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2) FEATURES -->
+    <section class="section" id="features">
+      <div class="section-head">
+        <h2 class="section-title">2️⃣ مقارنة الميزات الأساسية</h2>
+        <p class="section-note">تم استخدام نفس البنود المذكورة من المصادرحرفيا.</p>
+      </div>
+
+      <div class="content">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>الميزة</th>
+                <th>نظام Btoot</th>
+                <th>Mahjoz</th>
+                <th>Mashghali</th>
+                <th>Kofeer</th>
+                <th>Glamira</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>إدارة الحجوزات</td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+              </tr>
+
+              <tr>
+                <td>الحجز أونلاين</td>
+                <td><span class="pill mid"><span class="icon">↗</span>من الأناقة</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill mid"><span class="icon">↗</span>من الذهبي</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+              </tr>
+
+              <tr>
+                <td>نقاط البيع والفواتير</td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+              </tr>
+
+              <tr>
+                <td>إدارة العملاء</td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+              </tr>
+
+              <tr>
+                <td>إدارة الموظفين</td>
+                <td><span class="pill mid"><span class="icon">↗</span>من الأناقة</span></td>
+                <td><span class="pill mid"><span class="icon">~</span>جزئي</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill mid"><span class="icon">↗</span>من الذهبي</span></td>
+                <td><span class="pill mid"><span class="icon">↗</span>من الأساسية</span></td>
+              </tr>
+
+              <tr>
+                <td>العمولات والرواتب</td>
+                <td><span class="pill mid"><span class="icon">★</span>الكمال</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill mid"><span class="icon">~</span>جزئي</span></td>
+                <td><span class="pill mid"><span class="icon">↗</span>من الذهبي</span></td>
+                <td><span class="pill mid"><span class="icon">↗</span>المتقدمة</span></td>
+              </tr>
+
+              <tr>
+                <td>إدارة المخزون</td>
+                <td><span class="pill mid"><span class="icon">↗</span>من الأناقة</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill mid"><span class="icon">↗</span>من الذهبي</span></td>
+                <td><span class="pill mid"><span class="icon">↗</span>الأساسية</span></td>
+              </tr>
+
+              <tr>
+                <td>نظام محاسبي متكامل</td>
+                <td><span class="pill mid"><span class="icon">★</span>الكمال</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill mid"><span class="icon">↗</span>المتقدمة</span></td>
+              </tr>
+
+              <tr>
+                <td>التقارير المتقدمة</td>
+                <td><span class="pill mid"><span class="icon">↗</span>الأناقة+</span></td>
+                <td><span class="pill mid"><span class="icon">~</span>جزئي</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill mid"><span class="icon">↗</span>من الذهبي</span></td>
+                <td><span class="pill mid"><span class="icon">↗</span>المتقدمة</span></td>
+              </tr>
+
+              <tr>
+                <td>البيع أونلاين</td>
+                <td><span class="pill mid"><span class="icon">★</span>الكمال</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+              </tr>
+
+              <tr>
+                <td>QR / تكامل</td>
+                <td><span class="pill mid"><span class="icon">★</span>الكمال</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill mid"><span class="icon">~</span>جزئي</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3) SCALE & CUSTOMIZATION -->
+    <section class="section" id="scale">
+      <div class="section-head">
+        <h2 class="section-title">3️⃣ مقارنة التوسع والتخصيص</h2>
+        <p class="section-note">وضوح حدود المستخدمين والفروع نقطة بيع قوية.</p>
+      </div>
+
+      <div class="content">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>العنصر</th>
+  <th>نظام Btoot</th>                <th>Mahjoz</th>
+                <th>Mashghali</th>
+                <th>Kofeer</th>
+                <th>Glamira</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>عدد المستخدمين</td>
+                <td><span class="pill ok"><span class="icon">✓</span>واضح (4 / 10 / 25)</span></td>
+                <td><span class="pill mid"><span class="icon">?</span>غير واضح</span></td>
+                <td><span class="pill mid"><span class="icon">?</span>غير محدد</span></td>
+                <td><span class="pill mid"><span class="icon">?</span>غير واضح</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>3 / 10 / 20</span></td>
+              </tr>
+
+              <tr>
+                <td>الفروع</td>
+                <td><span class="pill ok"><span class="icon">✓</span>1 / 2 / غير محدود</span></td>
+                <td><span class="pill mid"><span class="icon">?</span>غير واضح</span></td>
+                <td><span class="pill mid"><span class="icon">?</span>غير واضح</span></td>
+                <td><span class="pill mid"><span class="icon">?</span>غير واضح</span></td>
+                <td><span class="pill mid"><span class="icon">?</span>غير واضح</span></td>
+              </tr>
+
+              <tr>
+                <td>تخصيص الثيم</td>
+                <td><span class="pill mid"><span class="icon">★</span>الكمال</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill mid"><span class="icon">↗</span>مدفوع</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+              </tr>
+
+              <tr>
+                <td>ربط دومين</td>
+                <td><span class="pill mid"><span class="icon">★</span>الكمال</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill mid"><span class="icon">↗</span>نسخة خاصة</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+              </tr>
+
+              <tr>
+                <td>API / تكامل</td>
+                <td><span class="pill mid"><span class="icon">★</span>الكمال</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) SUPPORT -->
+    <section class="section" id="ops">
+      <div class="section-head">
+        <h2 class="section-title">4️⃣ الدعم والتشغيل</h2>
+        <p class="section-note">يوضح الفروقات التشغيلية التي تؤثر على قرار الشراء.</p>
+      </div>
+
+      <div class="content">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>العنصر</th>
+  <th>نظام Btoot</th>                <th>Mahjoz</th>
+                <th>Mashghali</th>
+                <th>Kofeer</th>
+                <th>Glamira</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>دعم فني</td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill mid"><span class="icon">💬</span>واتساب</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+              </tr>
+
+              <tr>
+                <td>تدريب</td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+              </tr>
+
+              <tr>
+                <td>تحديثات</td>
+                <td><span class="pill ok"><span class="icon">∞</span>مستمرة</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">✕</span>❌</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>✅</span></td>
+                <td><span class="pill mid"><span class="icon">↻</span>سنوي</span></td>
+              </tr>
+
+              <tr>
+                <td>رسوم تأسيس</td>
+                <td><span class="pill ok"><span class="icon">✓</span>❌</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>❌</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>❌</span></td>
+                <td><span class="pill no"><span class="icon">!</span>✅</span></td>
+                <td><span class="pill ok"><span class="icon">✓</span>❌</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SUMMARY -->
+    <section class="section" id="summary">
+      <div class="section-head">
+        <h2 class="section-title">🏆 الخلاصة الاستراتيجية</h2>
+      </div>
+
+      <div class="content">
+        <div class="grid">
+          <div class="card half">
+            <h4><span class="pill tag"><span class="icon">✓</span>لماذا نظامنا يتفوّق؟</span></h4>
+            <ul class="list">
+              <li>✅ أوضح تسعير في السوق</li>
+              <li>✅ بدون رسوم تأسيس</li>
+              <li>✅ نمو تدريجي حقيقي (Upsell ذكي)</li>
+              <li>✅ ميزات غير موجودة عند الجميع (بيع أونلاين - بطاقات الاهداء (الهدايا) – محاسبة – تكامل -..الخ)</li>
+              <li>✅ أسماء باقات عاطفية تلامس الجمال والعناية (لمسة – أناقة – كمال)</li>
+            </ul>
+          </div>
+
+          <div class="card half">
+            <h4><span class="pill tag"><span class="icon">⚑</span>أين يقع المنافسون؟</span></h4>
+            <ul class="list">
+              <li><span class="hl">Mashghali:</span> رخيص لكن بدون عمق</li>
+              <li><span class="hl">Mahjoz:</span> بسيط ومحدود</li>
+              <li><span class="hl">Kofeer:</span> مكلف نفسيًا (تأسيس + اشتراك)</li>
+              <li><span class="hl">Glamira:</span> سعر جيد لكن إمكانيات توسّع ضعيفة</li>
+            </ul>
+          </div>
+        </div>
+
+        <p class="footer">© صفحة مقارنة داخلية/تسويقية.</p>
+      </div>
+    </section>
+
+  </div>
+</body>
+<script>
+function printPDF() {
+  // تأخير بسيط لضمان تحميل كل الخطوط والجداول
+  setTimeout(() => {
+    window.print();
+  }, 300);
+}
+</script>
+
+</html>
